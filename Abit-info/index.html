@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>AbitInfo</title>
+    <script src="dist/bower-libs.min.js"></script>
+    <link href="dist/bower-style.min.css" rel="stylesheet" />
+    <link href="https://bootswatch.com/paper/bootstrap.min.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>-->
+    <script src="dist/AbitInfo-ng.min.js"></script>
+</head>
+<body ng-app="abitApp" style="height:100%">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span></button><a class="navbar-brand" href="#">Project name</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar">
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Email" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Password" type="password" />
+                    </div>
+                    <button class="btn btn-success" type="submit">Sign in</button>
+                </form>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </nav>
+    <div class="container" id="page-content-wrapper" style="padding-top: 80px;">
+        <div class="container-fluid">
+            <div ui-view="">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+    <footer style="bottom: 0;left: 0;position: fixed;">
+        <div class="container">
+            <p>
+                &copy; Nazarii Shkatula 2015
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

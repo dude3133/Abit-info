@@ -1,0 +1,29 @@
+﻿<div class="row">
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div class="col-md-8">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{users.Message}}
+                <tr data-ng-repeat="user in users.listOfUsers">
+                    <td>
+                        {{ user.Id }}
+                    </td>
+                    <td>
+                        {{ user.Name }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+</div>
