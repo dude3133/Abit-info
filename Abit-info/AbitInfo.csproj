@@ -244,6 +244,9 @@
     <Content Include="Client\App\University\list\universitiesList.html" />
     <Content Include="Client\App\University\list\universitiesListService.js" />
     <Content Include="Client\App\University\list\universityListController.js" />
+    <Content Include="Client\App\University\page\university.html" />
+    <Content Include="Client\App\University\page\universityService.js" />
+    <Content Include="Client\App\University\page\universityController.js" />
     <Content Include="Controllers\University\list\universitiesList.html" />
     <Content Include="Controllers\University\list\universitiesListController.js" />
     <Content Include="Controllers\University\list\universitiesListService.js" />

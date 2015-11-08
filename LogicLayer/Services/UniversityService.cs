@@ -16,6 +16,7 @@ namespace LogicLayer.Services
         Task<IEnumerable<TruncatedUniversity>> GetUniversitiesList(PaginationModel page);
         Task<UniversityReturnModel> GetUniversityById(int id);
         Task<int> GetUniversitiesCount();
+        Task<IEnumerable<TruncatedUniversity>> FindUniversity(string query, int offset, int count);
     }
 
     public class UniversityService : IUniversityService
@@ -57,6 +58,19 @@ namespace LogicLayer.Services
             using (var context = _abitInfoDbContextProvider.Context)
             {
                 return await context.Universities.CountAsync();
+            }
+        }
+
+
+        public async Task<IEnumerable<TruncatedUniversity>> FindUniversity(string query, int offset, int count)
+        {
+            using (var context = _abitInfoDbContextProvider.Context)
+            {
+                var univ = await context.Universities.OrderBy(u => u.Id)
+                            .Where(u => u.Name.Contains(query))
+                            .Skip(offset)
+                            .Take(count).ToListAsync();
+                return univ.Select(u => _truncatedUniversityMapper.Map(u));
             }
         }
     }

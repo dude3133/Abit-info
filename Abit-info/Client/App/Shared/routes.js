@@ -26,8 +26,8 @@
                 }
             })
             .state('university', {
-                controller: 'universitiesListController as univlist',
-                templateUrl: '../Client/App/University/list/universitiesList.html',
+                controller: 'universityController as university',
+                templateUrl: '../Client/App/University/page/university.html',
                 url: '/university/:id',
                 resolve: {
                     universityInfo: universityInfoResolve

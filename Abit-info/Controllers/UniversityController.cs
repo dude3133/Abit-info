@@ -20,20 +20,30 @@ namespace AbitInfo.Controllers
         {
             _universityService = universityService;
         }
+
         [HttpGet]
         public Task<IEnumerable<TruncatedUniversity>> Get(int offset,
             int count)
         {
             return _universityService.GetUniversitiesList(new PaginationModel { Count = count, Offset = offset});
         }
+
         public async Task<UniversityReturnModel> Get(int id)
         {
             return await _universityService.GetUniversityById(id);
         }
+
         [Route("api/university/getCount")]
         public async Task<int> Get()
         {
             return await _universityService.GetUniversitiesCount();
+        }
+
+        [Route("api/university/search")]
+        public async Task<IEnumerable<TruncatedUniversity>> Get(string query,
+            int offset, int count)
+        {
+            return await _universityService.FindUniversity(query, offset, count);
         }
     }
 }

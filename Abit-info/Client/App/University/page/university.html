@@ -1,0 +1,38 @@
+﻿<div class="row">
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div class="col-md-8">
+        <h1>{{university.Name}}</h1>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Faculty ID</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr dir-paginate="faculty in university.Faculties | itemsPerPage: university.facultiesPerPage"
+                    pagination-id="faculty"
+                    total-items="university.facultyCount"
+                    current-page="university.facultyCurrentPage">
+                    <td>
+                        {{ faculty.Id }}
+                    </td>
+                    <td>
+                        {{ faculty.Name }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="panel-footer">
+            <!---newPageNumber is defined in the default pagination control template-->
+            <dir-pagination-controls pagination-id="faculty"
+                                     on-page-change="university.fetchFaculties(newPageNumber);">
+            </dir-pagination-controls>
+        </div>
+    </div>
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+</div>
