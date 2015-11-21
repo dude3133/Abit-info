@@ -14,7 +14,7 @@ namespace DbLayer.Configurations
         }
 
         public AbitInfoDbContext()
-            : base("Name=Somee")
+            : base("Name=Main")
         {
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;

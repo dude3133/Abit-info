@@ -25,14 +25,15 @@
                     universitiesCount: universitiesCountResolve
                 }
             })
-            .state('university', {
-                controller: 'universityController as university',
-                templateUrl: '../Client/App/University/page/university.html',
-                url: '/university/:id',
-                resolve: {
-                    universityInfo: universityInfoResolve
-                }
-            })
+             .state('university', {
+                 controller: 'universityController as university',
+                 templateUrl: '../Client/App/University/page/university.html',
+                 url: '/university/:id',
+                 resolve: {
+                     universityInfo: universityInfoResolve,
+                     facultiesCount: facultiesCountResolve
+                 }
+             })
             .state('admin', {
                 controller: 'adminController as admin',
                 templateUrl: '../Client/App/admin/admin.panel.html',
@@ -63,13 +64,20 @@
             return universitiesListService.getUniversitiesCount();
         }
 
-        universityInfoResolve.$inject = ['$stateParams','universityService'];
+
+
+        universityInfoResolve.$inject = ['$stateParams', 'universityService'];
         function universityInfoResolve($stateParams, universityService) {
-            return universityService.getUnivesity($stateParams.Id);
+            return universityService.getUnivesity($stateParams.id);
         }
-        //facultyInfoResolve.$inject = ['$stateParams', 'facultyService'];
-        //function facultyInfoResolve($stateParams, eventService) {
-        //    return facultyService.getFacultyData($stateParams.id);
-        //}
+
+        facultiesCountResolve.$inject = ['$stateParams', 'universityService'];
+        function facultiesCountResolve($stateParams, universityService) {
+            var page = {
+                offset: 0,
+                count: 20
+            }
+            return universityService.getFaculties($stateParams.id, page);
+        }
     }
 })();

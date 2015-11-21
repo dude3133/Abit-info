@@ -23,5 +23,11 @@ namespace AbitInfo.Controllers
         {
             return await _facultyService.GetFacultyById(id);
         }
+        [HttpGet]
+        public Task<IEnumerable<TruncatedFaculty>> Get(int id,int offset,
+            int count)
+        {
+            return _facultyService.GeFacultiesList(id, count, offset);
+        }
     }
 }

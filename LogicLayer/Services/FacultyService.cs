@@ -13,17 +13,22 @@ namespace LogicLayer.Services
     public interface IFacultyService
     {
         Task<FacultyReturnModel> GetFacultyById(int id);
+
+        Task<IEnumerable<TruncatedFaculty>> GeFacultiesList(int id, int count, int offset);
     }
     public class FacultyService : IFacultyService
     {
         private IAbitInfoDbContextProvider _abitInfoDbContextProvider;
         private IFacultyReturnModelMapper _facultyReturnModelMapper;
+        private ITruncatedFacultyMapper _truncatedFacultyMapper;
 
         public FacultyService(IAbitInfoDbContextProvider abitInfoDbContextProvider,
-            IFacultyReturnModelMapper facultyReturnModelMapper)
+            IFacultyReturnModelMapper facultyReturnModelMapper,
+            ITruncatedFacultyMapper truncatedFacultyMapper)
         {
             _abitInfoDbContextProvider = abitInfoDbContextProvider;
             _facultyReturnModelMapper = facultyReturnModelMapper;
+            _truncatedFacultyMapper = truncatedFacultyMapper;
         }
         public async Task<FacultyReturnModel> GetFacultyById(int id)
         {
@@ -34,6 +39,17 @@ namespace LogicLayer.Services
                     .Select(f => new{ f, f.University, f.Specialities})
                     .FirstAsync())
                     .f);
+            }
+        }
+
+
+        public async Task<IEnumerable<TruncatedFaculty>> GeFacultiesList(int id, int count, int offset)
+        {
+            using (var context = _abitInfoDbContextProvider.Context)
+            {
+                var faculties = await context.Faculties.Where(f => f.UniversityId == id)
+                    .OrderBy(u => u.Id).Skip(offset).Take(count).ToListAsync();
+                return faculties.Select(f => _truncatedFacultyMapper.Map(f)).ToList();
             }
         }
     }

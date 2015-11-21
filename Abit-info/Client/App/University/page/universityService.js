@@ -3,24 +3,24 @@
 
     angular
         .module('abitApp')
-        .factory('universitiesListService', universitiesListService);
+        .factory('universityService', universityService);
 
-    universitiesListService.$inject = ['$http'];
+    universityService.$inject = ['$http'];
 
-    function universitiesListService($http) {
+    function universityService($http) {
         return {
-            getUniversities: getUniversities,
-            getUniversitiesCount: getUniversitiesCount
+            getFaculties: getFaculties,
+            getUnivesity: getUnivesity
         };
 
-        function getUniversities(page) {
-            return $http.get('/api/University/get/?offset=' + page.offset + '&count=' + page.count)
+        function getFaculties(id,page) {
+            return $http.get('/api/Faculty/get/?id=' + id + '&offset=' + page.offset + '&count=' + page.count)
                 .then(function (httpData) {
                     return httpData.data;
                 });
         }
-        function getUniversitiesCount() {
-            return $http.get('/api/University/getCount/')
+        function getUnivesity(id) {
+            return $http.get('/api/University/get/'+id)
                 .then(function (httpData) {
                     return httpData.data;
                 });

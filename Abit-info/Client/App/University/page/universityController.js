@@ -4,10 +4,11 @@
         .module('abitApp')
         .controller('universityController', universityController);
 
-    universityController.$inject = ['facultiesCount', 'universityService'];
+    universityController.$inject = ['universityInfo','facultiesCount', 'universityService'];
 
-    function universityController(facultiesCount, universityService) {
+    function universityController(universityInfo, facultiesCount, universityService) {
         var vm = this;
+        vm.university = universityInfo;
         vm.faculties = [];
         vm.Message = " ";
         vm.facultiesCount = facultiesCount;
@@ -20,7 +21,7 @@
                 offset: vm.facultiesPerPage * (currentPage - 1),
                 count: vm.facultiesPerPage
             }
-            universityService.getFaculties(page).then(function (data) {
+            universityService.getFaculties(vm.university.Id,page).then(function (data) {
                 vm.faculties = data;
             });
         }
@@ -29,10 +30,10 @@
 
         function init() {
             var page = {
-                offset: vm.facultiesPerPage * (facultiesCurrentPage - 1),
+                offset: vm.facultiesPerPage * (vm.facultiesCurrentPage - 1),
                 count: vm.facultiesPerPage
             }
-            universityService.getFaculties(page).then(function (data) {
+            universityService.getFaculties(vm.university.Id, page).then(function (data) {
                 vm.faculties = data;
             });
         }
