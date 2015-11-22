@@ -12,25 +12,16 @@
             </tr>
             </thead>
             <tbody>
-                <tr dir-paginate="faculty in university.faculties | itemsPerPage: university.facultiesPerPage"
-                    pagination-id="faculty"
-                    total-items="university.facultyCount"
-                    current-page="university.facultyCurrentPage">
+                <tr ng-repeat="faculty in university.university.Faculties">
                     <td>
                         {{ faculty.Id }}
                     </td>
                     <td>
-                        {{ faculty.Name }}
+                        <a href="#/faculty/{{ faculty.Id }}">{{ faculty.Name }}</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <div class="panel-footer">
-            <!---newPageNumber is defined in the default pagination control template-->
-            <dir-pagination-controls pagination-id="faculty"
-                                     on-page-change="university.fetchFaculties(newPageNumber);">
-            </dir-pagination-controls>
-        </div>
     </div>
     <div class="col-md-2">
         &nbsp;

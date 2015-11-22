@@ -237,6 +237,9 @@
     <Content Include="Client\App\Auth\login.controller.js" />
     <Content Include="Client\App\Auth\signup.controller.js" />
     <Content Include="Client\App\Auth\signup.html" />
+    <Content Include="Client\App\Faculty\faculty.html" />
+    <Content Include="Client\App\Faculty\facultyController.js" />
+    <Content Include="Client\App\Faculty\facultyService.js" />
     <Content Include="Client\App\Main\main.html" />
     <Content Include="Client\App\Main\mainPageController.js" />
     <Content Include="Client\App\Shared\abit.module.run.js" />
@@ -285,7 +288,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Client\App\Faculty\" />
     <Folder Include="Client\App\Speciality\" />
     <Folder Include="Client\Assets\" />
     <Folder Include="Views\Home\" />

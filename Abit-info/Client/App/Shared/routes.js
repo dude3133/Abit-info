@@ -34,6 +34,14 @@
                      facultiesCount: facultiesCountResolve
                  }
              })
+            .state('faculty', {
+                controller: 'facultyController as faculty',
+                templateUrl: '../Client/App/Faculty/faculty.html',
+                url: '/faculty/:id',
+                resolve: {
+                    facultyInfo: facultyInfoResolve
+                }
+            })
             .state('admin', {
                 controller: 'adminController as admin',
                 templateUrl: '../Client/App/admin/admin.panel.html',
@@ -78,6 +86,10 @@
                 count: 20
             }
             return universityService.getFaculties($stateParams.id, page);
+        }
+        facultyInfoResolve.$inject = ['$stateParams', 'facultyService'];
+        function facultyInfoResolve($stateParams, facultyService) {
+            return facultyService.getFaculty($stateParams.id);
         }
     }
 })();
