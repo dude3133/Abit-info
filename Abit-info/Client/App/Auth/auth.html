@@ -26,22 +26,10 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-sm-5 col-sm-offset-1">
+                                        <div class="col-md-6 col-md-offset-3">
                                             <button name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-lg btn-info btn-block" type="submit" data-ng-click="login.login()" ng-disabled="login.disabled">Login</button>
-
-
-
                                         </div>
-                                        <div class="col-sm-4 col-sm-offset-1">
-                                            <button class="form-control btn btn-lg btn-info btn-block btn-facebook"
-                                                    data-ng-click="login.authExternalProvider('Facebook')">
-                                                <img class="fb-img" src="http://music.uoregon.edu/sites/music2.uoregon.edu/files/facebook_logo.png" alt="Facebook" height="24" width="24">
-                                                
-                                                Facebook
-                                            </button>
-                                        </div>
-
-                                        <div class="col-sm-8 col-sm-offset-1">
+                                        <div class="col-md-8 col-md-offset-1">
                                             <div data-ng-hide="login.message == ''" class="alert alert-danger">
                                                 {{login.message}}
                                             </div>
@@ -64,7 +52,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-sm-6 col-sm-offset-3">
+                                        <div class="col-md-6 col-md-offset-3">
                                             <button class="btn btn-lg btn-primary btn-block" type="submit" class="form-control btn btn-register" type="submit" data-ng-click="registr.signUp()" ng-disabled="registr.disabled"> Submit </button>
                                                 <div data-ng-hide="registr.message == ''" data-ng-class="(registr.savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
                                                     {{registr.message}}

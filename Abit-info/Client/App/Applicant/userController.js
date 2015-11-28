@@ -4,11 +4,19 @@
         .module('abitApp')
         .controller('userController', userController);
 
-    userController.$inject = [];
+    userController.$inject = ['userService'];
 
-    function userController() {
+    function userController(userService) {
         var vm = this;
-        vm.listOfUsers = [{ 'Name': 'UserName1', 'Id':1 }];
+        vm.listOfUsers = [];
         vm.Message = " ";
+
+        activate();
+
+        function activate() {
+            userService.getUsers().then(function(data) {
+                vm.listOfUsers = data;
+            });
+        }
     };
 })();

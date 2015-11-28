@@ -37,7 +37,9 @@ namespace AbitInfo
             Container.RegisterType<IUniversityReturnModelMapper, UniversityReturnModelMapper>();
             Container.RegisterType<ISpecialityReturnModelMapper, SpecialityReturnModelMapper>();
             Container.RegisterType<IFacultyReturnModelMapper, FacultyReturnModelMapper>();
+            Container.RegisterType<ITruncatedUserMapper, TruncatedUserMapper>();
 
+            Container.RegisterType<IUserService, UserService>();
             Container.RegisterType<IAuthService, AuthService>();
             Container.RegisterType<IFacultyService, FacultyService>();
             Container.RegisterType<IUniversityService, UniversityService>();

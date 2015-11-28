@@ -7,7 +7,9 @@
             <thead>
                 <tr>
                     <th>User ID</th>
+                    <th>UserName</th>
                     <th>Name</th>
+                    <th>Surname</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,7 +19,13 @@
                         {{ user.Id }}
                     </td>
                     <td>
+                        {{ user.UserName }}
+                    </td>
+                    <td>
                         {{ user.Name }}
+                    </td>
+                    <td>
+                        {{ user.Surname }}
                     </td>
                 </tr>
             </tbody>

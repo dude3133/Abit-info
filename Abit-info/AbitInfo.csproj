@@ -213,6 +213,7 @@
     <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UniversityController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -223,6 +224,7 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Client\App\Applicant\applicants.html" />
+    <Content Include="Client\App\Applicant\userService.js" />
     <Content Include="Client\App\Applicant\userController.js" />
     <Content Include="Client\App\Auth\associate.controller.js" />
     <Content Include="Client\App\Auth\associate.html" />
@@ -243,6 +245,7 @@
     <Content Include="Client\App\Main\main.html" />
     <Content Include="Client\App\Main\mainPageController.js" />
     <Content Include="Client\App\Shared\abit.module.run.js" />
+    <Content Include="Client\App\Shared\index.controller.js" />
     <Content Include="Client\App\Shared\routes.js" />
     <Content Include="Client\App\University\list\universitiesList.html" />
     <Content Include="Client\App\University\list\universitiesListService.js" />

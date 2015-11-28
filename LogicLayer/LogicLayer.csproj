@@ -80,6 +80,7 @@
     <Compile Include="Mappers\TruncatedFacultyMapper.cs" />
     <Compile Include="Mappers\TruncatedSpecialityMapper.cs" />
     <Compile Include="Mappers\TruncatedUniversityMapper.cs" />
+    <Compile Include="Mappers\TruncatedUserMapper.cs" />
     <Compile Include="Mappers\UniversityReturnModelMapper.cs" />
     <Compile Include="Models\FacultyReturnModel.cs" />
     <Compile Include="Models\Identity\AddExternalLoginBindingModel.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Models\TruncatedFaculty.cs" />
     <Compile Include="Models\TruncatedSpeciality.cs" />
     <Compile Include="Models\TruncatedUniversity.cs" />
+    <Compile Include="Models\TruncatedUser.cs" />
     <Compile Include="Models\UniversityReturnModel.cs" />
     <Compile Include="Models\WebAPI\PaginationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\FacultyService.cs" />
     <Compile Include="Services\UniversityService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

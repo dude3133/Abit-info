@@ -15,22 +15,30 @@
     <script src="dist/AbitInfo-ng.min.js"></script>
 </head>
 <body ng-app="abitApp" style="height:100%">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav ng-controller="indexController as index" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span></button><a class="navbar-brand" href="#">Project name</a>
+                <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span></button><a class="navbar-brand" href="#">Abit info</a>
             </div>
-            <div class="navbar-collapse collapse" id="navbar">
+            <!--<div class="navbar-collapse collapse" id="navbar">
                 <form class="navbar-form navbar-right">
                     <div class="form-group">
-                        <input class="form-control" placeholder="Email" type="text" />
+                        <input class="form-control" placeholder="Email" type="text"/>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" placeholder="Password" type="password" />
+                        <input class="form-control" placeholder="Password" type="password"/>
                     </div>
                     <button class="btn btn-success" type="submit">Sign in</button>
                 </form>
-            </div>
+            </div>-->
+            <ul class="nav navbar-nav navbar-right" id="rightNavLinks">
+                <li data-ng-hide="!index.authentication.isAuth"><a href="#/">Welcome {{index.authentication.userName}} {{index.loadingService}}</a></li>
+                <li data-ng-hide="!index.authentication.isAuth" ng-include="'client/app/notifications/notification.html'"></li>
+                <li data-ng-hide="!index.authentication.isAuth"><a ng-click="index.logOut()"><span class="glyphicon glyphicon glyphicon-log-out"></span>Log out</a></li>
+                <li data-ng-hide="index.authentication.isAuth"><a ng-click="index.SignUp()">Register</a></li>
+                <li data-ng-hide="index.authentication.isAuth"><a ng-click="index.LogIn()">Log In</a></li>
+
+            </ul>
             <!--/.navbar-collapse -->
         </div>
     </nav>
