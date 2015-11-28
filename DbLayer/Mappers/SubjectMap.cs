@@ -3,9 +3,9 @@ using DbLayer.Models;
 
 namespace DbLayer.Mappers
 {
-    public class FacultyMap : EntityTypeConfiguration<Faculty>
+    public class SubjectMap : EntityTypeConfiguration<Subject>
     {
-        public FacultyMap()
+        public SubjectMap()
         {
             // Primary Key
             HasKey(t => t.Id);
@@ -16,16 +16,9 @@ namespace DbLayer.Mappers
                 .HasMaxLength(100);
 
             // Table & Column Mappings
-            ToTable("Faculties");
+            ToTable("Subjects");
             Property(t => t.Id).HasColumnName("Id");
             Property(t => t.Name).HasColumnName("Name");
-            Property(t => t.UniversityId).HasColumnName("UniversityId");
-
-            // Relationships
-            HasRequired(t => t.University)
-                .WithMany(t => t.Faculties)
-                .HasForeignKey(d => d.UniversityId);
-
         }
     }
 }

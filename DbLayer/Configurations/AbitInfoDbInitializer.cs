@@ -9,12 +9,12 @@ namespace DbLayer.Configurations
     {
          protected override void Seed(AbitInfoDbContext context)
          {
-             var roles = new List<Role>
+             var roles = new List<AspNetRole>
              {
-                 new Role {Id = "1", Name = "admin", State = EntityState.Added},
-                 new Role {Id = "2", Name = "user", State = EntityState.Added}
+                 new AspNetRole {Id = "1", Name = "admin", State = EntityState.Added},
+                 new AspNetRole {Id = "2", Name = "user", State = EntityState.Added}
              };
-             roles.ForEach(r => context.Roles.Add(r));
+             roles.ForEach(r => context.AspNetRoles.Add(r));
              context.SaveChanges();
 
              var universities = new List<University>
@@ -71,7 +71,7 @@ namespace DbLayer.Configurations
                      FacultyId = 1,
                      LicencedVolume = 60,
                      StateOrder = 40,
-                     Type = SpecialityType.Bachelor,
+                     Type = (int) SpecialityType.Bachelor,
                      State = EntityState.Added
                  }
              };

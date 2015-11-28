@@ -12,13 +12,14 @@ namespace DbLayer.Configurations
     public interface IAbitInfoDbContext : IDisposable
     {
         IDbSet<Applicant> Applicants { get; set; }
-        IDbSet<ApplicantsClaim> ApplicantsClaims { get; set; }
-        IDbSet<ApplicantsLogin> ApplicantsLogins { get; set; }
+        IDbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        IDbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         IDbSet<Faculty> Faculties { get; set; }
-        IDbSet<Role> Roles { get; set; }
+        IDbSet<AspNetRole> AspNetRoles { get; set; }
         IDbSet<Speciality> Specialities { get; set; }
         IDbSet<University> Universities { get; set; }
-
+        IDbSet<Subject> Subjects { get; set; }
+        IDbSet<TestResult> TestResults { get; set; }
         Task<int> SaveChangesAsync();
         int SaveChanges();
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;

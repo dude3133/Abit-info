@@ -4,8 +4,11 @@ using LogicLayer;
 using LogicLayer.Mappers;
 using Unity.WebApi;
 using DbLayer.Configurations;
+using DbLayer.Models;
 using LogicLayer.Services;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataProtection;
 using Owin;
 
@@ -20,6 +23,13 @@ namespace AbitInfo
 
             Container.RegisterInstance<IDataProtectionProvider>(app.GetDataProtectionProvider());
             Container.RegisterType<IIdentityMessageService, EmailService>();
+
+
+            Container.RegisterType<IdentityUser, AbitInfoIdentityUser>();
+            Container.RegisterType<IUserStore<AbitInfoIdentityUser>, UserStore< AbitInfoIdentityUser>>();
+            Container.RegisterType<IdentityDbContext<AbitInfoIdentityUser>,  AbitInfoIdentityContext>();
+            Container.RegisterType<IAbitInfoIdentityProvider,  AbitInfoIdentityProvider>();
+
 
             Container.RegisterType<ITruncatedFacultyMapper, TruncatedFacultyMapper>();
             Container.RegisterType<ITruncatedUniversityMapper, TruncatedUniversityMapper>();

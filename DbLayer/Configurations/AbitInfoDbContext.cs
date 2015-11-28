@@ -21,20 +21,22 @@ namespace DbLayer.Configurations
         }
 
         public IDbSet<Applicant> Applicants { get; set; }
-        public IDbSet<ApplicantsClaim> ApplicantsClaims { get; set; }
-        public IDbSet<ApplicantsLogin> ApplicantsLogins { get; set; }
+        public IDbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public IDbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public IDbSet<Faculty> Faculties { get; set; }
-        public IDbSet<Role> Roles { get; set; }
+        public IDbSet<AspNetRole> AspNetRoles { get; set; }
         public IDbSet<Speciality> Specialities { get; set; }
         public IDbSet<University> Universities { get; set; }
+        public IDbSet<Subject> Subjects { get; set; }
+        public IDbSet<TestResult> TestResults { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new ApplicantMap());
-            modelBuilder.Configurations.Add(new ApplicantsClaimMap());
-            modelBuilder.Configurations.Add(new ApplicantsLoginMap());
+            modelBuilder.Configurations.Add(new AspNetUserClaimMap());
+            modelBuilder.Configurations.Add(new AspNetUserLoginMap());
             modelBuilder.Configurations.Add(new FacultyMap());
-            modelBuilder.Configurations.Add(new RoleMap());
+            modelBuilder.Configurations.Add(new AspNetRoleMap());
             modelBuilder.Configurations.Add(new SpecialityMap());
             modelBuilder.Configurations.Add(new UniversityMap());
         }

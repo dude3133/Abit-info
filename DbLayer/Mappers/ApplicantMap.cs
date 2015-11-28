@@ -8,54 +8,54 @@ namespace DbLayer.Mappers
         public ApplicantMap()
         {
             // Primary Key
-            this.HasKey(t => t.Id);
+            HasKey(t => t.Id);
 
             // Properties
-            this.Property(t => t.Id)
+            Property(t => t.Id)
                 .IsRequired()
                 .HasMaxLength(128);
 
-            this.Property(t => t.UserName)
+            Property(t => t.UserName)
                 .IsRequired()
                 .HasMaxLength(256);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .HasMaxLength(30);
 
-            this.Property(t => t.Surname)
+            Property(t => t.Surname)
                 .HasMaxLength(30);
 
-            this.Property(t => t.Email)
+            Property(t => t.Email)
                 .HasMaxLength(256);
 
-            this.Property(t => t.Image)
+            Property(t => t.Image)
                 .HasMaxLength(200);
 
             // Table & Column Mappings
-            this.ToTable("Applicants");
-            this.Property(t => t.Id).HasColumnName("Id");
-            this.Property(t => t.UserName).HasColumnName("UserName");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Surname).HasColumnName("Surname");
-            this.Property(t => t.Email).HasColumnName("Email");
-            this.Property(t => t.PasswordHash).HasColumnName("PasswordHash");
-            this.Property(t => t.Banned).HasColumnName("Banned");
-            this.Property(t => t.Image).HasColumnName("Image");
-            this.Property(t => t.CreationTime).HasColumnName("CreationTime");
-            this.Property(t => t.Birthdate).HasColumnName("Birthdate");
-            this.Property(t => t.EmailConfirmed).HasColumnName("EmailConfirmed");
-            this.Property(t => t.SecurityStamp).HasColumnName("SecurityStamp");
-            this.Property(t => t.PhoneNumber).HasColumnName("PhoneNumber");
-            this.Property(t => t.PhoneNumberConfirmed).HasColumnName("PhoneNumberConfirmed");
-            this.Property(t => t.TwoFactorEnabled).HasColumnName("TwoFactorEnabled");
-            this.Property(t => t.LockoutEndDateUtc).HasColumnName("LockoutEndDateUtc");
-            this.Property(t => t.LockoutEnabled).HasColumnName("LockoutEnabled");
-            this.Property(t => t.AccessFailedCount).HasColumnName("AccessFailedCount");
-            this.Property(t => t.Suspended).HasColumnName("Suspended");
-            this.Property(t => t.Sex).HasColumnName("Sex");
+            ToTable("Applicants");
+            Property(t => t.Id).HasColumnName("Id");
+            Property(t => t.UserName).HasColumnName("UserName");
+            Property(t => t.Name).HasColumnName("Name");
+            Property(t => t.Surname).HasColumnName("Surname");
+            Property(t => t.Email).HasColumnName("Email");
+            Property(t => t.PasswordHash).HasColumnName("PasswordHash");
+            Property(t => t.Banned).HasColumnName("Banned");
+            Property(t => t.Image).HasColumnName("Image");
+            Property(t => t.CreationTime).HasColumnName("CreationTime");
+            Property(t => t.Birthdate).HasColumnName("Birthdate");
+            Property(t => t.EmailConfirmed).HasColumnName("EmailConfirmed");
+            Property(t => t.SecurityStamp).HasColumnName("SecurityStamp");
+            Property(t => t.PhoneNumber).HasColumnName("PhoneNumber");
+            Property(t => t.PhoneNumberConfirmed).HasColumnName("PhoneNumberConfirmed");
+            Property(t => t.TwoFactorEnabled).HasColumnName("TwoFactorEnabled");
+            Property(t => t.LockoutEndDateUtc).HasColumnName("LockoutEndDateUtc");
+            Property(t => t.LockoutEnabled).HasColumnName("LockoutEnabled");
+            Property(t => t.AccessFailedCount).HasColumnName("AccessFailedCount");
+            Property(t => t.Suspended).HasColumnName("Suspended");
+            Property(t => t.Sex).HasColumnName("Sex");
 
             // Relationships
-            this.HasMany(t => t.Specialities)
+            HasMany(t => t.Specialities)
                 .WithMany(t => t.Applicants)
                 .Map(m =>
                     {
@@ -64,11 +64,11 @@ namespace DbLayer.Mappers
                         m.MapRightKey("SpecialityId");
                     });
 
-            this.HasMany(t => t.Roles)
+            HasMany(t => t.AspNetRoles)
                 .WithMany(t => t.Applicants)
                 .Map(m =>
                     {
-                        m.ToTable("ApplicantsRoles");
+                        m.ToTable("AspNetUserRoles");
                         m.MapLeftKey("UserId");
                         m.MapRightKey("RoleId");
                     });

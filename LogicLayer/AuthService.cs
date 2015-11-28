@@ -71,6 +71,7 @@ namespace LogicLayer
                 CreationTime = DateTime.UtcNow,
                 Email = registerUserModel.Email,
                 EmailConfirmed = true,
+                Banned = false
             };
 
             using (IdentityDbContext<AbitInfoIdentityUser> context = _identityProvider.Context)

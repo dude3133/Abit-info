@@ -6,7 +6,7 @@ namespace DbLayer.Models
     {
         public University()
         {
-            this.Faculties = new List<Faculty>();
+            Faculties = new List<Faculty>();
         }
 
         public int Id { get; set; }

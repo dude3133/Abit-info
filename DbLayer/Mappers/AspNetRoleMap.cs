@@ -3,26 +3,26 @@ using DbLayer.Models;
 
 namespace DbLayer.Mappers
 {
-    public class RoleMap : EntityTypeConfiguration<Role>
+    public class AspNetRoleMap : EntityTypeConfiguration<AspNetRole>
     {
-        public RoleMap()
+        public AspNetRoleMap()
         {
             // Primary Key
-            this.HasKey(t => t.Id);
+            HasKey(t => t.Id);
 
             // Properties
-            this.Property(t => t.Id)
+            Property(t => t.Id)
                 .IsRequired()
                 .HasMaxLength(128);
 
-            this.Property(t => t.Name)
+            Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(256);
 
             // Table & Column Mappings
-            this.ToTable("Roles");
-            this.Property(t => t.Id).HasColumnName("Id");
-            this.Property(t => t.Name).HasColumnName("Name");
+            ToTable("AspNetRoles");
+            Property(t => t.Id).HasColumnName("Id");
+            Property(t => t.Name).HasColumnName("Name");
         }
     }
 }

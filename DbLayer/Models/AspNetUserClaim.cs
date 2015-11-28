@@ -1,6 +1,6 @@
 namespace DbLayer.Models
 {
-    public class ApplicantsClaim : BaseEntity
+    public class AspNetUserClaim : BaseEntity
     {
         public int Id { get; set; }
         public string UserId { get; set; }

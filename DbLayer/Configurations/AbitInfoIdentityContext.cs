@@ -10,10 +10,10 @@ using DbLayer.Models;
 
 namespace DbLayer.Configurations
 {
-    class AbitInfoIdentityContext:IdentityDbContext<AbitInfoIdentityUser>
+    public class AbitInfoIdentityContext:IdentityDbContext<AbitInfoIdentityUser>
     {
         public AbitInfoIdentityContext()
-            : base("Somee", throwIfV1Schema: false)
+            : base("Main", throwIfV1Schema: false)
         {
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;

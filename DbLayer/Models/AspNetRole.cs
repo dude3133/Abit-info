@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace DbLayer.Models
 {
-    public class Role : BaseEntity
+    public class AspNetRole : BaseEntity
     {
-        public Role()
+        public AspNetRole()
         {
-            this.Applicants = new List<Applicant>();
+            Applicants = new List<Applicant>();
         }
 
         public string Id { get; set; }

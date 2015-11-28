@@ -22,7 +22,7 @@ namespace LogicLayer.Mappers
                 Name = speciality.Name,
                 LicencedVolume = speciality.LicencedVolume,
                 StateOrder = speciality.StateOrder,
-                Type = speciality.Type
+                Type = (SpecialityType) speciality.Type
             };
         }
     }

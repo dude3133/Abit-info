@@ -6,15 +6,22 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using AbitInfo.Models;
 using AbitInfo.Results;
 using LogicLayer;
+using LogicLayer.Models.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using AddExternalLoginBindingModel = AbitInfo.Models.AddExternalLoginBindingModel;
+using ChangePasswordBindingModel = AbitInfo.Models.ChangePasswordBindingModel;
+using ManageInfoViewModel = AbitInfo.Models.ManageInfoViewModel;
+using RemoveLoginBindingModel = AbitInfo.Models.RemoveLoginBindingModel;
+using SetPasswordBindingModel = AbitInfo.Models.SetPasswordBindingModel;
+using UserInfoViewModel = AbitInfo.Models.UserInfoViewModel;
+using UserLoginInfoViewModel = AbitInfo.Models.UserLoginInfoViewModel;
 
 namespace AbitInfo.Controllers
 {
@@ -24,16 +31,12 @@ namespace AbitInfo.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private IAuthService _authService;
 
-        public AccountController()
-        {
-        }
 
-        public AccountController(ApplicationUserManager userManager,
-            ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
+        public AccountController(IAuthService authService)
         {
-            UserManager = userManager;
-            AccessTokenFormat = accessTokenFormat;
+            _authService = authService;
         }
 
         public ApplicationUserManager UserManager
@@ -221,23 +224,23 @@ namespace AbitInfo.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        public async Task<IHttpActionResult> Register(RegisterUserBindingModel registerUserModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
-            if (!result.Succeeded)
+            IdentityResult result = await _authService.RegisterUser(registerUserModel);
+            IHttpActionResult errorResult = GetErrorResult(result);
+            if (errorResult != null)
             {
-                return GetErrorResult(result);
+                return errorResult;
             }
+            var user = await _authService.FindUser(registerUserModel.Username, registerUserModel.Password);
 
-            return Ok();
+            Uri locationHeader = new Uri(Url.Link("GetUserByNameRoute",
+                new { name = user.UserName }));
+            return Created(locationHeader, user);
         }
 
         protected override void Dispose(bool disposing)

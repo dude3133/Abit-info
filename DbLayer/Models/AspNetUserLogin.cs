@@ -1,6 +1,6 @@
 namespace DbLayer.Models
 {
-    public class ApplicantsLogin : BaseEntity
+    public class AspNetUserLogin : BaseEntity
     {
         public string LoginProvider { get; set; }
         public string ProviderKey { get; set; }

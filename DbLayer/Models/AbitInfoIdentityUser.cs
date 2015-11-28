@@ -10,5 +10,6 @@ namespace DbLayer.Models
     public class AbitInfoIdentityUser:IdentityUser
     {
         public DateTime? CreationTime { get; set; }
+        public bool Banned { get; set; }
     }
 }

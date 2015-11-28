@@ -6,7 +6,7 @@ namespace DbLayer.Models
     {
         public Faculty()
         {
-            this.Specialities = new List<Speciality>();
+            Specialities = new List<Speciality>();
         }
 
         public int Id { get; set; }

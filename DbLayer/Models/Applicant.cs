@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace DbLayer.Models
@@ -7,10 +7,11 @@ namespace DbLayer.Models
     {
         public Applicant()
         {
-            this.ApplicantsClaims = new List<ApplicantsClaim>();
-            this.ApplicantsLogins = new List<ApplicantsLogin>();
-            this.Specialities = new List<Speciality>();
-            this.Roles = new List<Role>();
+            AspNetUserClaims = new List<AspNetUserClaim>();
+            AspNetUserLogins = new List<AspNetUserLogin>();
+            TestResults = new List<TestResult>();
+            Specialities = new List<Speciality>();
+            AspNetRoles = new List<AspNetRole>();
         }
 
         public string Id { get; set; }
@@ -33,9 +34,10 @@ namespace DbLayer.Models
         public int AccessFailedCount { get; set; }
         public bool? Suspended { get; set; }
         public bool? Sex { get; set; }
-        public virtual ICollection<ApplicantsClaim> ApplicantsClaims { get; set; }
-        public virtual ICollection<ApplicantsLogin> ApplicantsLogins { get; set; }
+        public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual ICollection<TestResult> TestResults { get; set; }
         public virtual ICollection<Speciality> Specialities { get; set; }
-        public virtual ICollection<Role> Roles { get; set; }
+        public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
     }
 }
