@@ -40,6 +40,12 @@ namespace DbLayer.Configurations
             modelBuilder.Configurations.Add(new SpecialityMap());
             modelBuilder.Configurations.Add(new UniversityMap());
         }
+
+        public bool Apply(Applicant applicant, Speciality speciality)
+        {
+            var x = Database.SqlQuery<int>("sp_apply", applicant.Id, speciality.Id);
+            return true;
+        }
         public void Update<T>(T entity) where T : BaseEntity
         {
             Set<T>().Add(entity);

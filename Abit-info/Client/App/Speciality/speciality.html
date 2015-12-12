@@ -1,0 +1,29 @@
+﻿<div class="row">
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div class="col-md-8">
+        <h1>{{speciality.speciality.Name}}</h1>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>applicant ID</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="applicant in faculty.faculty.Specialities">
+                    <td>
+                        {{ applicant.Id }}
+                    </td>
+                    <td>
+                        <a href="#/applicant/{{ applicant.Id }}">{{ applicant.Name }}</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+</div>

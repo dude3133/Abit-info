@@ -247,6 +247,9 @@
     <Content Include="Client\App\Shared\abit.module.run.js" />
     <Content Include="Client\App\Shared\index.controller.js" />
     <Content Include="Client\App\Shared\routes.js" />
+    <Content Include="Client\App\Speciality\speciality.html" />
+    <Content Include="Client\App\Speciality\specialityController.js" />
+    <Content Include="Client\App\Speciality\specialityService.js" />
     <Content Include="Client\App\University\list\universitiesList.html" />
     <Content Include="Client\App\University\list\universitiesListService.js" />
     <Content Include="Client\App\University\list\universitiesListController.js" />
@@ -291,7 +294,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Client\App\Speciality\" />
     <Folder Include="Client\Assets\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>

@@ -20,6 +20,7 @@ namespace DbLayer.Configurations
         IDbSet<University> Universities { get; set; }
         IDbSet<Subject> Subjects { get; set; }
         IDbSet<TestResult> TestResults { get; set; }
+        bool Apply(Applicant applicant, Speciality speciality);
         Task<int> SaveChangesAsync();
         int SaveChanges();
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;

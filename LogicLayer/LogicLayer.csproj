@@ -104,6 +104,7 @@
     <Compile Include="Models\Identity\RegisterUserBindingModel.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\FacultyService.cs" />
+    <Compile Include="Services\SpecialityService.cs" />
     <Compile Include="Services\UniversityService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>

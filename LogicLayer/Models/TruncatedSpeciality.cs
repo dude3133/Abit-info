@@ -9,7 +9,6 @@ namespace LogicLayer.Models
 {
     public class TruncatedSpeciality
     {
-
         public int Id { get; set; }
         public string Name { get; set; }
         public int StateOrder { get; set; }
