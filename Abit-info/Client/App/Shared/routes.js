@@ -42,6 +42,14 @@
                     facultyInfo: facultyInfoResolve
                 }
             })
+            .state('speciality', {
+                controller: 'specialityController as speciality',
+                templateUrl: '../Client/App/Speciality/speciality.html',
+                url: '/speciality/:id',
+                resolve: {
+                    specialityInfo: specialityInfoResolve
+                }
+            })
             .state('admin', {
                 controller: 'adminController as admin',
                 templateUrl: '../Client/App/admin/admin.panel.html',
@@ -87,9 +95,15 @@
             }
             return universityService.getFaculties($stateParams.id, page);
         }
+
         facultyInfoResolve.$inject = ['$stateParams', 'facultyService'];
         function facultyInfoResolve($stateParams, facultyService) {
             return facultyService.getFaculty($stateParams.id);
+        }
+
+        specialityInfoResolve.$inject = ['$stateParams', 'specialityService'];
+        function specialityInfoResolve($stateParams, specialityService) {
+            return specialityService.getSpeciality($stateParams.id);
         }
     }
 })();

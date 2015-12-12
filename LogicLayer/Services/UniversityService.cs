@@ -11,35 +11,35 @@ using LogicLayer.Models.WebAPI;
 
 namespace LogicLayer.Services
 {
-    public interface ISpecialityService
+    public interface IUniversityService
     {
-        Task<IEnumerable<TruncatedSpeciality>> GetSpecialitiesList(PaginationModel page);
-        Task<SpecialityReturnModel> GetSpecialityById(int id);
-        Task<int> GetSpecialitiesCount();
-        Task<IEnumerable<TruncatedSpeciality>> FindSpeciality(string query, int offset, int count);
+        Task<IEnumerable<TruncatedUniversity>> GetUniversitiesList(PaginationModel page);
+        Task<UniversityReturnModel> GetUniversityById(int id);
+        Task<int> GetUniversitiesCount();
+        Task<IEnumerable<TruncatedUniversity>> FindUniversity(string query, int offset, int count);
     }
 
-    public class SpecialityService : ISpecialityService
+    public class UniversityService : IUniversityService
     {
         private IAbitInfoDbContextProvider _abitInfoDbContextProvider;
-        private ITruncatedSpecialityMapper _truncatedSpecialityMapper;
-        private ISpecialityReturnModelMapper _specialityReturnModelMapper;
+        private ITruncatedUniversityMapper _truncatedUniversityMapper;
+        private IUniversityReturnModelMapper _universityReturnModelMapper;
 
-        public SpecialityService(IAbitInfoDbContextProvider abitInfoDbContextProvider,
-            ITruncatedSpecialityMapper truncatedSpecialityMapper,
-            ISpecialityReturnModelMapper specialityReturnModelMapper)
+        public UniversityService(IAbitInfoDbContextProvider abitInfoDbContextProvider,
+            ITruncatedUniversityMapper truncatedUniversityMapper,
+            IUniversityReturnModelMapper universityReturnModel)
         {
             _abitInfoDbContextProvider = abitInfoDbContextProvider;
-            _truncatedSpecialityMapper = truncatedSpecialityMapper;
-            _specialityReturnModelMapper = specialityReturnModelMapper;
+            _truncatedUniversityMapper = truncatedUniversityMapper;
+            _universityReturnModelMapper = universityReturnModel;
         }
 
         public async Task<UniversityReturnModel> GetUniversityById(int id)
         {
             using (var context = _abitInfoDbContextProvider.Context)
             {
-                var univ = await context.Universities.Where(u => u.Id == id).Select(u => new {u,u.Faculties}).FirstOrDefaultAsync();
-                return _specialityReturnModelMapper.Map(univ.u);
+                var univ = await context.Universities.Where(u => u.Id == id).Select(u => new { u, u.Faculties }).FirstOrDefaultAsync();
+                return _universityReturnModelMapper.Map(univ.u);
             }
         }
 
@@ -48,7 +48,7 @@ namespace LogicLayer.Services
             using (var context = _abitInfoDbContextProvider.Context)
             {
                 var univ = await context.Universities.OrderBy(u => u.Id).Skip(page.Offset).Take(page.Count).ToListAsync();
-                return univ.Select(u => _truncatedSpecialityMapper.Map(u)).ToList();
+                return univ.Select(u => _truncatedUniversityMapper.Map(u)).ToList();
             }
         }
 
@@ -70,41 +70,7 @@ namespace LogicLayer.Services
                             .Where(u => u.Name.Contains(query))
                             .Skip(offset)
                             .Take(count).ToListAsync();
-                return univ.Select(u => _truncatedSpecialityMapper.Map(u));
-            }
-        }
-
-        public Task<IEnumerable<TruncatedSpeciality>> GetSpecialitiesList(PaginationModel page)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<SpecialityReturnModel> GetSpecialityById(int id)
-        {
-            using (var context = _abitInfoDbContextProvider.Context)
-            {
-                var spec = await context.Specialities.Where(u => u.Id == id).Select(u => new { u, u.Faculty }).FirstOrDefaultAsync();
-                return _specialityReturnModelMapper.Map(spec.u);
-            }
-        }
-
-        public async Task<int> GetSpecialitiesCount()
-        {
-            using (var context = _abitInfoDbContextProvider.Context)
-            {
-                return await context.Specialities.CountAsync();
-            }
-        }
-
-        public async Task<IEnumerable<TruncatedSpeciality>> FindSpeciality(string query, int offset, int count)
-        {
-            using (var context = _abitInfoDbContextProvider.Context)
-            {
-                var univ = await context.Specialities.OrderBy(u => u.Id)
-                            .Where(u => u.Name.Contains(query))
-                            .Skip(offset)
-                            .Take(count).ToListAsync();
-                return univ.Select(u => _truncatedSpecialityMapper.Map(u));
+                return univ.Select(u => _truncatedUniversityMapper.Map(u));
             }
         }
     }
