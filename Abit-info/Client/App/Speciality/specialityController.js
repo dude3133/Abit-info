@@ -9,7 +9,6 @@
     function specialityController(specialityInfo, specialityService) {
         var vm = this;
         vm.speciality = specialityInfo;
-        vm.specialities = [];
         vm.Message = " ";
 
     };

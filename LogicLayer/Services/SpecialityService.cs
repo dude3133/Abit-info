@@ -43,7 +43,7 @@ namespace LogicLayer.Services
         {
             using (var context = _abitInfoDbContextProvider.Context)
             {
-                var spec = await context.Specialities.Where(u => u.Id == id).Select(u => new { u, u.Faculty }).FirstOrDefaultAsync();
+                var spec = await context.Specialities.Where(u => u.Id == id).Select(u => new { u, u.Faculty, u.Applicants }).FirstOrDefaultAsync();
                 return _specialityReturnModelMapper.Map(spec.u);
             }
         }

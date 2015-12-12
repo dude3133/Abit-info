@@ -14,14 +14,14 @@
         };
 
         function getApplicants(id) {
-            return $http.get('/api/Specialities/get/?id=' + id)
+            return $http.get('/api/Speciality/get/?id=' + id)
                 .then(function (httpData) {
                     return httpData.data;
                 });
         }
         
         function getSpeciality(id) {
-            return $http.get('/api/Specialities/get/?id=' + id)
+            return $http.get('/api/Speciality/get/?id=' + id)
                 .then(function (httpData) {
                     return httpData.data;
                 });
