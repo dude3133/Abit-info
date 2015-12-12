@@ -5,7 +5,7 @@ using DbLayer.Models;
 namespace DbLayer.Configurations
 {
      public class AbitInfoDbInitializer : DropCreateDatabaseAlways<AbitInfoDbContext>
-    //public class AbitInfoDBInitializer: DropCreateDatabaseIfModelChanges<EventServeContext>
+    //public class AbitInfoDBInitializer: DropCreateDatabaseIfModelChanges<AbitInfoDbContext>
     {
          protected override void Seed(AbitInfoDbContext context)
          {
