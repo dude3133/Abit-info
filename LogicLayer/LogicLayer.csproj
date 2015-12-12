@@ -80,6 +80,7 @@
     <Compile Include="Mappers\TruncatedTestResultMapper.cs" />
     <Compile Include="Mappers\TruncatedFacultyMapper.cs" />
     <Compile Include="Mappers\TruncatedSpecialityMapper.cs" />
+    <Compile Include="Mappers\TruncatedSubjectMapper.cs" />
     <Compile Include="Mappers\TruncatedUniversityMapper.cs" />
     <Compile Include="Mappers\TruncatedApplicantMapper.cs" />
     <Compile Include="Mappers\TruncatedUserMapper.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Models\TruncatedApplicant.cs" />
     <Compile Include="Models\TruncatedFaculty.cs" />
     <Compile Include="Models\TruncatedSpeciality.cs" />
+    <Compile Include="Models\TruncatedSubject.cs" />
     <Compile Include="Models\TruncatedTestResult.cs" />
     <Compile Include="Models\TruncatedUniversity.cs" />
     <Compile Include="Models\TruncatedUser.cs" />
