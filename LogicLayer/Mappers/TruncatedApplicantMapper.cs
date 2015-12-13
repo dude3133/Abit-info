@@ -8,24 +8,24 @@ using LogicLayer.Models;
 
 namespace LogicLayer.Mappers
 {
-    public interface ITruncatedApplicantMapper
+    public interface IApplicantForSpecialityMapper
     {
-        TruncatedApplicant Map(Applicant applicant);
+        ApplicantForSpeciality Map(Applicant applicant, int subject1Id, int subject2Id, int subject3Id);
     }
-    public class TruncatedApplicantMapper : ITruncatedApplicantMapper
+    public class ApplicantForSpecialityMapper : IApplicantForSpecialityMapper
     {
         private ITruncatedSpecialityMapper _truncatedSpecialitiesMapper;
         private ITruncatedTestResultMapper _truncatedTestMapper;
 
-        public TruncatedApplicantMapper(ITruncatedSpecialityMapper truncatedSpecialitiesMapper,
+        public ApplicantForSpecialityMapper(ITruncatedSpecialityMapper truncatedSpecialitiesMapper,
             ITruncatedTestResultMapper truncatedTestMapper)
         {
             _truncatedSpecialitiesMapper = truncatedSpecialitiesMapper;
             _truncatedTestMapper = truncatedTestMapper;
         }
-        public TruncatedApplicant Map(Applicant applicant)
+        public ApplicantForSpeciality Map(Applicant applicant, int subject1Id, int subject2Id, int subject3Id)
         {
-            return new TruncatedApplicant
+            return new ApplicantForSpeciality
             {
                 Banned = applicant.Banned,
                 Birthdate = applicant.Birthdate,
@@ -36,9 +36,10 @@ namespace LogicLayer.Mappers
                 Surname = applicant.Surname,
                 UserName = applicant.UserName,
                 PhoneNumber = applicant.PhoneNumber,
-                Specialities = applicant.Specialities.Select(s => _truncatedSpecialitiesMapper.Map(s)).ToList(),
-                TestResults = applicant.TestResults.Select(t => _truncatedTestMapper.Map(t)).ToList(),
-                Suspended = applicant.Suspended
+                Suspended = applicant.Suspended,
+                Result1 = applicant.TestResults.Where(t => t.SubjectId == subject1Id && t.ApplicantId ==applicant.Id).Select(t => t.Points).SingleOrDefault(),
+                Result2 = applicant.TestResults.Where(t => t.SubjectId == subject2Id && t.ApplicantId ==applicant.Id).Select(t => t.Points).SingleOrDefault(),
+                Result3 = applicant.TestResults.Where(t => t.SubjectId == subject3Id && t.ApplicantId ==applicant.Id).Select(t => t.Points).SingleOrDefault()
             };
         }
     }

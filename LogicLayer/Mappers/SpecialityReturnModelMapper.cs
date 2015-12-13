@@ -17,15 +17,15 @@ namespace LogicLayer.Mappers
     public class SpecialityReturnModelMapper : ISpecialityReturnModelMapper
     {
         private ITruncatedFacultyMapper _truncatedFacultyMapper;
-        private ITruncatedApplicantMapper _truncatedApplicantMaper;
+        private IApplicantForSpecialityMapper _applicantForSpecialityMaper;
         private ITruncatedSubjectMapper _truncatedSubjectMapper;
 
         public SpecialityReturnModelMapper(ITruncatedFacultyMapper truncatedFacultyMapper,
-            ITruncatedApplicantMapper truncatedApplicantMaper,
+            IApplicantForSpecialityMapper applicantForSpecialityMaper,
             ITruncatedSubjectMapper truncatedSubjectMapper)
         {
             _truncatedFacultyMapper = truncatedFacultyMapper;
-            _truncatedApplicantMaper = truncatedApplicantMaper;
+            _applicantForSpecialityMaper = applicantForSpecialityMaper;
             _truncatedSubjectMapper = truncatedSubjectMapper;
         }
 
@@ -35,16 +35,16 @@ namespace LogicLayer.Mappers
             return new SpecialityReturnModel()
             {
                 StateOrder = s.StateOrder,
+                LicencedVolume = s.LicencedVolume,
+                Type = (SpecialityType)s.Type,
                 Name = s.Name,
-                Applicants = s.Applicants.Select(a => _truncatedApplicantMaper.Map(a)).ToList(),
+                Applicants = s.Applicants.Select(a => _applicantForSpecialityMaper.Map(a, s.Subject.Id, s.Subject4.Id, s.Subject5.Id))
+                    .OrderByDescending(x => x.Result1+x.Result2+x.Result3).ToList(),
                 Id = s.Id,
                 Faculty = _truncatedFacultyMapper.Map(s.Faculty),
-                Subjects = new List<TruncatedSubject>
-                {
-                    _truncatedSubjectMapper.Map(s.Subject),
-                    _truncatedSubjectMapper.Map(s.Subject4),
-                    _truncatedSubjectMapper.Map(s.Subject5)
-                }
+                Subject1 = s.Subject.Name,
+                Subject2 = s.Subject4.Name,
+                Subject3 = s.Subject5.Name
             };
 
         }

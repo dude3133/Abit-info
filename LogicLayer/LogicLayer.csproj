@@ -77,6 +77,7 @@
     <Compile Include="AuthService.cs" />
     <Compile Include="Mappers\FacultyReturnModelMapper.cs" />
     <Compile Include="Mappers\SpecialityReturnModelMapper.cs" />
+    <Compile Include="Mappers\ApplicantForSpecialityMapper.cs" />
     <Compile Include="Mappers\TruncatedTestResultMapper.cs" />
     <Compile Include="Mappers\TruncatedFacultyMapper.cs" />
     <Compile Include="Mappers\TruncatedSpecialityMapper.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Mappers\TruncatedApplicantMapper.cs" />
     <Compile Include="Mappers\TruncatedUserMapper.cs" />
     <Compile Include="Mappers\UniversityReturnModelMapper.cs" />
+    <Compile Include="Models\ApplicantForSpeciality.cs" />
     <Compile Include="Models\FacultyReturnModel.cs" />
     <Compile Include="Models\Identity\AddExternalLoginBindingModel.cs" />
     <Compile Include="Models\Identity\ChangePasswordBindingModel.cs" />

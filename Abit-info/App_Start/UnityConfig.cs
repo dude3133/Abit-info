@@ -41,6 +41,7 @@ namespace AbitInfo
             Container.RegisterType<ITruncatedApplicantMapper, TruncatedApplicantMapper>();
             Container.RegisterType<ITruncatedTestResultMapper, TruncatedTestResultMapper>();
             Container.RegisterType<ITruncatedSubjectMapper, TruncatedSubjectMapper>();
+            Container.RegisterType<IApplicantForSpecialityMapper, ApplicantForSpecialityMapper>();
 
             Container.RegisterType<IUserService, UserService>();
             Container.RegisterType<IAuthService, AuthService>();
