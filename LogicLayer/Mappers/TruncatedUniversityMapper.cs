@@ -3,15 +3,15 @@ using LogicLayer.Models;
 
 namespace LogicLayer.Mappers
 {
-    public interface ITruncatedUniversityMapper
+    public interface ITruncatedSubjectMapper
     {
-        TruncatedUniversity Map(University university);
+        TruncatedSubject Map(Subject university);
     }
-    public class TruncatedUniversityMapper : ITruncatedUniversityMapper
+    public class TruncatedSubjectMapper : ITruncatedSubjectMapper
     {
-        public TruncatedUniversity Map(University university)
+        public TruncatedSubject Map(Subject university)
         {
-            return new TruncatedUniversity()
+            return new TruncatedSubject()
             {
                 Id = university.Id,
                 Name = university.Name

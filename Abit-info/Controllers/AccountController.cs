@@ -236,8 +236,7 @@ namespace AbitInfo.Controllers
             }
             var user = await _authService.FindUser(registerUserModel.Username, registerUserModel.Password);
 
-            Uri locationHeader = new Uri(Url.Link("GetUserByNameRoute",
-                new { name = user.UserName }));
+            Uri locationHeader = new Uri(Url.Link("GetUserByNameRoute", new { name = user.UserName }));
             return Created(locationHeader, user);
         }
 

@@ -28,7 +28,6 @@ namespace AbitInfo
             UnityConfig.RegisterComponents(app);
             app.UseWebApi(RegisterHttpConfiguration());
             ConfigureOAuth(app);
-            
         }
         public static HttpConfiguration RegisterHttpConfiguration()
         {

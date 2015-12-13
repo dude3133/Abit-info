@@ -9,11 +9,19 @@
 
     function specialityService($http) {
         return {
-            getApplicant: getApplicant
+            getApplicants: getApplicants,
+            getSpeciality: getSpeciality
         };
 
-        function getApplicant(id, page) {
-            return $http.get('/api/Specialities/get/?id=' + id + '&offset=' + page.offset + '&count=' + page.count)
+        function getApplicants(id) {
+            return $http.get('/api/Speciality/get/?id=' + id)
+                .then(function (httpData) {
+                    return httpData.data;
+                });
+        }
+        
+        function getSpeciality(id) {
+            return $http.get('/api/Speciality/get/?id=' + id)
                 .then(function (httpData) {
                     return httpData.data;
                 });

@@ -12,6 +12,9 @@ namespace LogicLayer.Models
         public SpecialityType Type { get; set; }
         public int FacultyId { get; set; }
         public TruncatedFaculty Faculty { get; set; }
-        public ICollection<Applicant> Applicants { get; set; }
+        public ICollection<ApplicantForSpeciality> Applicants { get; set; }
+        public string Subject1 { get; set; }
+        public string Subject2 { get; set; }
+        public string Subject3 { get; set; }
     }
 }

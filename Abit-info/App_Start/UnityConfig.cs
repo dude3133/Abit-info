@@ -35,11 +35,16 @@ namespace AbitInfo
             Container.RegisterType<ISpecialityReturnModelMapper, SpecialityReturnModelMapper>();
             Container.RegisterType<IFacultyReturnModelMapper, FacultyReturnModelMapper>();
             Container.RegisterType<ITruncatedUserMapper, TruncatedUserMapper>();
+            Container.RegisterType<ITruncatedApplicantMapper, TruncatedApplicantMapper>();
+            Container.RegisterType<ITruncatedTestResultMapper, TruncatedTestResultMapper>();
+            Container.RegisterType<ITruncatedSubjectMapper, TruncatedSubjectMapper>();
+            Container.RegisterType<IApplicantForSpecialityMapper, ApplicantForSpecialityMapper>();
 
             Container.RegisterType<IUserService, UserService>();
             Container.RegisterType<IAuthService, AuthService>();
             Container.RegisterType<IFacultyService, FacultyService>();
             Container.RegisterType<IUniversityService, UniversityService>();
+            Container.RegisterType<ISpecialityService, SpecialityService>();
 
             Container.RegisterType<IAbitInfoIdentityProvider, AbitInfoIdentityProvider>();
             Container.RegisterType<IAbitInfoDbContextProvider, AbitInfoDbContextProvider>();
