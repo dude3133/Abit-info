@@ -1,15 +1,12 @@
-using Microsoft.Practices.Unity;
-using System.Web.Http;
-using LogicLayer;
-using LogicLayer.Mappers;
-using Unity.WebApi;
 using DbLayer.Configurations;
 using DbLayer.Models;
+using LogicLayer;
+using LogicLayer.Mappers;
 using LogicLayer.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataProtection;
+using Microsoft.Practices.Unity;
 using Owin;
 
 namespace AbitInfo

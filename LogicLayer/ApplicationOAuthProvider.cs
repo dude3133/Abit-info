@@ -6,6 +6,7 @@ using DbLayer.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json;
 
 namespace LogicLayer
 {
@@ -49,7 +50,7 @@ namespace LogicLayer
 
         public static AuthenticationProperties CreateProperties(string userName, List<Claim> roles)
         {
-            string rolesString = Newtonsoft.Json.JsonConvert.SerializeObject(roles.Select(x => x.Value));
+            string rolesString = JsonConvert.SerializeObject(roles.Select(x => x.Value));
             IDictionary<string, string> data = new Dictionary<string, string>
             {
                 {"userName", userName},

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Http;
+using System.Web.Http.Routing;
 using AbitInfo;
 using AbitInfo.Models;
 using DbLayer.Configurations;
@@ -7,8 +8,8 @@ using LogicLayer;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Practices.Unity;
 using Microsoft.Owin.Security.OAuth;
+using Microsoft.Practices.Unity;
 using Owin;
 using Unity.WebApi;
 
@@ -31,9 +32,11 @@ namespace AbitInfo
         }
         public static HttpConfiguration RegisterHttpConfiguration()
         {
+            HttpRoute route = new HttpRoute("");
             HttpConfiguration config = new HttpConfiguration
             {
-                DependencyResolver = new UnityDependencyResolver(UnityConfig.Container)
+                DependencyResolver = new UnityDependencyResolver(UnityConfig.Container),
+                Routes = { { "GetUserByNameRoute", route } }
             };
             WebApiConfig.Register(config);
             return config;
