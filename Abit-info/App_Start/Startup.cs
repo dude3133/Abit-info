@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Http;
+using System.Web.Http.Routing;
 using AbitInfo;
 using AbitInfo.Models;
 using DbLayer.Configurations;
@@ -27,13 +28,14 @@ namespace AbitInfo
             UnityConfig.RegisterComponents(app);
             app.UseWebApi(RegisterHttpConfiguration());
             ConfigureOAuth(app);
-            
         }
         public static HttpConfiguration RegisterHttpConfiguration()
         {
+            HttpRoute route = new HttpRoute("");
             HttpConfiguration config = new HttpConfiguration
             {
-                DependencyResolver = new UnityDependencyResolver(UnityConfig.Container)
+                DependencyResolver = new UnityDependencyResolver(UnityConfig.Container),
+                Routes = { {"GetUserByNameRoute", route} }
             };
             WebApiConfig.Register(config);
             return config;
