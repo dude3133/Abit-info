@@ -4,16 +4,21 @@
         .module('abitApp')
         .controller('specialityController', specialityController);
 
-    specialityController.$inject = ['specialityInfo', 'specialityService'];
+    specialityController.$inject = ['specialityInfo', 'specialityService', '$stateParams'];
 
-    function specialityController(specialityInfo, specialityService) {
+    function specialityController(specialityInfo, specialityService, $stateParams) {
         var vm = this;
         vm.speciality = specialityInfo;
         vm.Message = " ";
         vm.getAccepted = getAccepted;
         vm.getRecomended = getRecomended;
         vm.getApplicants = getApplicants;
+        vm.apply = apply;
 
+
+        function apply() {
+            specialityService.apply($stateParams.id);
+        }
         function getAccepted(to) {
             return vm.speciality.Applicants.slice(0, to);
         }

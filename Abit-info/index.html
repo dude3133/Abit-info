@@ -33,7 +33,6 @@
             </div>-->
             <ul class="nav navbar-nav navbar-right" id="rightNavLinks">
                 <li data-ng-hide="!index.authentication.isAuth"><a href="#/">Welcome {{index.authentication.userName}} {{index.loadingService}}</a></li>
-                <li data-ng-hide="!index.authentication.isAuth" ng-include="'client/app/notifications/notification.html'"></li>
                 <li data-ng-hide="!index.authentication.isAuth"><a ng-click="index.logOut()"><span class="glyphicon glyphicon glyphicon-log-out"></span>Log out</a></li>
                 <li data-ng-hide="index.authentication.isAuth"><a ng-click="index.SignUp()">Register</a></li>
                 <li data-ng-hide="index.authentication.isAuth"><a ng-click="index.LogIn()">Log In</a></li>

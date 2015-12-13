@@ -248,6 +248,9 @@
     <Content Include="Client\App\Shared\abit.module.run.js" />
     <Content Include="Client\App\Shared\index.controller.js" />
     <Content Include="Client\App\Shared\routes.js" />
+    <Content Include="Client\App\Speciality\Search\specialitySearch.html" />
+    <Content Include="Client\App\Speciality\Search\specialitySearchController.js" />
+    <Content Include="Client\App\Speciality\Search\specialitySearchService.js" />
     <Content Include="Client\App\Speciality\speciality.html" />
     <Content Include="Client\App\Speciality\specialityController.js" />
     <Content Include="Client\App\Speciality\specialityService.js" />

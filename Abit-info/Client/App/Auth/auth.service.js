@@ -12,6 +12,7 @@
             isAuth: false,
             userName: "",
             roles: [],
+            Id : "",
             isInRoles: isInRoles
         };
         var externalAuthData = {
@@ -143,6 +144,7 @@
                 authentication.isAuth = true;
                 authentication.userName = authData.userName;
                 authentication.roles = authData.roles;
+                authentication.Id = authData.Id;
             }
         }
 

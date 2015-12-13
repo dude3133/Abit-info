@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 using DbLayer.Mappers;
 using DbLayer.Models;
@@ -41,10 +42,13 @@ namespace DbLayer.Configurations
             modelBuilder.Configurations.Add(new UniversityMap());
         }
 
-        public bool Apply(Applicant applicant, Speciality speciality)
+        public Task<int> Apply(Applicant applicant, Speciality speciality)
         {
-            var x = Database.SqlQuery<int>("sp_apply", applicant.Id, speciality.Id);
-            return true;
+            var specialityId = new SqlParameter("@specialityId", speciality.Id);
+            var applicantId = new SqlParameter("@applicantId", applicant.Id);
+
+            var x = Database.SqlQuery<int>("[sp_apply] @applicantId, @specialityId", applicantId, specialityId);
+            return x.FirstOrDefaultAsync();
         }
         public void Update<T>(T entity) where T : BaseEntity
         {

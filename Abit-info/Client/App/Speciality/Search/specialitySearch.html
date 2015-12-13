@@ -1,0 +1,35 @@
+﻿<div class="row">
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div class="col-md-8">
+        <h1>Speciality Search</h1>
+        <div class="form-group button-group">
+            <input class="form-control" placeholder="Enter speciality you want to find" rows="3" name="query" id="query-textarea" tabindex="3" ng-model="specSearch.query" required/>
+            <div class="control-field">
+                <button ng-click="specSearch.find()" class="btn btn-primary btn-comment" tabindex="4">Find</button>
+            </div>
+        </div>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>speciality ID</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="speciality in specSearch.specialities">
+                    <td>
+                        {{ speciality.Id }}
+                    </td>
+                    <td>
+                        <a href="#/speciality/{{ speciality.Id }}">{{ speciality.Name }}</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+</div>

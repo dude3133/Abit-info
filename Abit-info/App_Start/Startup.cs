@@ -31,11 +31,9 @@ namespace AbitInfo
         }
         public static HttpConfiguration RegisterHttpConfiguration()
         {
-            HttpRoute route = new HttpRoute("");
             HttpConfiguration config = new HttpConfiguration
             {
                 DependencyResolver = new UnityDependencyResolver(UnityConfig.Container),
-                Routes = { { "GetUserByNameRoute", route } }
             };
             WebApiConfig.Register(config);
             return config;
@@ -56,7 +54,7 @@ namespace AbitInfo
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString("/Token"),
-                Provider = new AbitInfoOAuthProvider(new AuthService(UnityConfig.Container.Resolve<IAbitInfoIdentityProvider>())),//UnityConfig.Container.Resolve<IAuthService>()),
+                Provider = new AbitInfoOAuthProvider(UnityConfig.Container.Resolve<IAuthService>()),//new AbitInfoOAuthProvider(new AuthService(UnityConfig.Container.Resolve<IAbitInfoIdentityProvider>())),//UnityConfig.Container.Resolve<IAuthService>()),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 // In production mode set AllowInsecureHttp = false

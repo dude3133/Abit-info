@@ -5,12 +5,13 @@
         .module('abitApp')
         .factory('specialityService', specialityService);
 
-    specialityService.$inject = ['$http'];
+    specialityService.$inject = ['$http', 'authService'];
 
-    function specialityService($http) {
+    function specialityService($http, authService) {
         return {
             getApplicants: getApplicants,
-            getSpeciality: getSpeciality
+            getSpeciality: getSpeciality,
+            apply: apply
         };
 
         function getApplicants(id) {
@@ -27,5 +28,16 @@
                 });
         }
 
+        function apply(id) {
+            var model = {
+                UserName: authService.authentication.userName,
+                UserId:"",
+                Id:id
+            }
+            return $http.post('/api/Speciality/post/',model)
+                .then(function (httpData) {
+                    return httpData.data;
+                });
+        } 
     }
 })();

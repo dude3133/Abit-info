@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace LogicLayer.Services
         Task<SpecialityReturnModel> GetSpecialityById(int id);
         Task<int> GetSpecialitiesCount();
         Task<IEnumerable<TruncatedSpeciality>> FindSpeciality(string query, int offset, int count);
+        Task<bool> Apply(string applicantName, int specialityId);
     }
 
     public class SpecialityService : ISpecialityService
@@ -67,6 +69,18 @@ namespace LogicLayer.Services
                             .Skip(offset)
                             .Take(count).ToListAsync();
                 return univ.Select(u => _truncatedSpecialityMapper.Map(u));
+            }
+        }
+
+
+        public async Task<bool> Apply(string applicantName, int specialityId)
+        {
+            using (var context = _abitInfoDbContextProvider.Context)
+            {
+                var applicant = context.Applicants.SingleOrDefault(a => a.UserName == applicantName);
+                var speciality = context.Specialities.SingleOrDefault(s => s.Id == specialityId);
+                var res = await context.Apply(applicant, speciality);
+                return res == 1;
             }
         }
     }

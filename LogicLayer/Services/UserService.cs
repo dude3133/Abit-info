@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using DbLayer.Configurations;
 using DbLayer.Models;
 using LogicLayer.Mappers;
@@ -10,7 +11,6 @@ namespace LogicLayer.Services
     public interface IUserService
     {
         IEnumerable<TruncatedUser> GetAllUsers();
-        bool Apply(string userId, int specialityId);
     }
     public class UserService : IUserService
     {
@@ -31,15 +31,6 @@ namespace LogicLayer.Services
             using (var context = _abitInfoDbContextProvider.Context)
             {
                 return (context.Applicants.ToList().Select(u => _truncatedUserMapper.Map(u)));
-            }
-        }
-
-
-        public bool Apply(string userId, int specialityId)
-        {
-            using (var context = _abitInfoDbContextProvider.Context)
-            {
-                return context.Apply(new Applicant { Id = userId }, new Speciality { Id = specialityId });
             }
         }
     }

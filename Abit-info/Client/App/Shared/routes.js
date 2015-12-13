@@ -58,6 +58,11 @@
                     roles: ['Admin']
                 }
             })
+            .state('specSeach', {
+                controller: 'specialitySearchController as specSearch',
+                templateUrl: '../Client/App/Speciality/Search/specialitySearch.html',
+                url: '/search'
+            })
             .state('associate', {
                 controller: 'associateController as associate',
                 templateUrl: '../Client/App/auth/associate.html',

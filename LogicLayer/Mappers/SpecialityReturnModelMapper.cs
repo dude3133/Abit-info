@@ -1,4 +1,5 @@
-﻿using DbLayer.Models;
+﻿using System.Linq;
+using DbLayer.Models;
 using LogicLayer.Models;
 
 namespace LogicLayer.Mappers
